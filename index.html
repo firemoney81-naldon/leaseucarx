@@ -1,23 +1,861 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <!-- JSON-LD Structured Data for Product and FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Mercedes-Benz CLS",
+      "description": "메르세데스-벤츠 CLS 모델의 총 소유 비용, 자동차 리스 및 장기 렌트카 옵션에 대한 종합적인 정보 및 최신 분석. 2026년 트렌드를 반영하여 최적의 차량 운용 방법을 안내합니다.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Mercedes-Benz"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "벤츠 CLS 자동차 리스",
+          "description": "월별 고정 리스료로 CLS를 운용할 수 있는 금융 상품. 상세 견적 및 상담 가능.",
+          "url": "#leasing",
+          "priceCurrency": "KRW",
+          "category": "Car Leasing"
+        },
+        {
+          "@type": "Offer",
+          "name": "벤츠 CLS 장기 렌트카",
+          "description": "보험, 세금 포함하여 월 단위로 CLS를 이용하는 서비스. 유연한 계약 조건.",
+          "url": "#rental",
+          "priceCurrency": "KRW",
+          "category": "Car Rental"
+        },
+        {
+          "@type": "Offer",
+          "name": "벤츠 CLS 차량 구매 (총 소유 비용)",
+          "description": "직접 구매 시 예상되는 유지비, 세금, 보험료 등의 총 소유 비용 정보.",
+          "url": "#maintenance",
+          "priceCurrency": "KRW",
+          "category": "Car Ownership Costs"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1250"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "2026년 벤츠 CLS의 예상 유지비는 얼마인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026년 벤츠 CLS의 예상 유지비는 모델, 운행 습관, 보험 조건 등에 따라 다르지만, 연간 약 500만원에서 1000만원 이상을 고려해야 합니다. 여기에는 유류비, 보험료, 자동차세, 정기적인 소모품 교체 비용이 포함됩니다. 최신 모델의 경우, 연비 개선 및 첨단 기술 적용으로 이전 모델 대비 소폭의 변동이 있을 수 있습니다. 정확한 견적은 전문가 상담을 통해 확인하시는 것이 좋습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "벤츠 CLS 자동차 리스와 장기 렌트카의 가장 큰 차이점은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "가장 큰 차이점은 '소유' 개념입니다. 자동차 리스는 명의가 고객에게 이전되는 금융 상품으로, 자산으로 잡힐 수 있습니다. 반면 장기 렌트카는 렌트카 회사 명의로 등록되며, 계약 종료 후 반납하거나 인수할 수 있습니다. 보험료, 세금 처리 방식, 계약 만기 시 인수 옵션 등에서 차이가 있습니다. 최신 CLS 모델의 경우, 두 옵션 모두 매력적인 운용 방안이 될 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "벤츠 CLS 차량 구매 시 고려해야 할 숨겨진 비용은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "구매 시 차량 가격 외에도 취득세, 등록세, 공채 매입비용 등 초기 부대 비용이 발생합니다. 또한, 고성능 수입차인 CLS의 경우, 일반 차량보다 높은 보험료, 정기적인 고가 소모품(타이어, 브레이크 패드 등) 교체 비용, 예기치 못한 수리 비용, 그리고 연간 자동차세도 상당한 부분을 차지합니다. 연비 대비 유류비 부담도 고려해야 합니다. 이러한 모든 비용을 종합하여 '총 소유 비용(TCO, Total Cost of Ownership)'으로 파악하는 것이 중요합니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Internal Styles -->
+    <style>
+      :root {
+        --primary-color: #005F73; /* Deep Teal */
+        --secondary-color: #0A9396; /* Cyan */
+        --accent-color: #94D2BD; /* Light Green */
+        --highlight-color: #E9D8A6; /* Pale Yellow */
+        --text-color: #020811; /* Very Dark Blue/Black */
+        --bg-light: #F8F9FA; /* Off-white */
+        --bg-white: #ffffff;
+        --btn-color: #AE2012; /* Crimson Red */
+        --btn-hover: #9B2226; /* Darker Red */
+        --border-color: #dee2e6;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Montserrat:wght@400;600;700&display=swap');
+
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-light);
+        color: var(--text-color);
+        line-height: 1.7;
+        scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        background-color: var(--primary-color);
+        padding: 25px 0;
+        text-align: center;
+        color: var(--bg-white);
+        box-shadow: 0 4px 15px var(--shadow-color);
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2.8em;
+        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: -0.5px;
+      }
+      header h1 a {
+        color: var(--bg-white);
+        text-decoration: none;
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        color: var(--text-color); /* Changed to dark text for better contrast on lighter gradient */
+        text-align: center;
+        padding: 120px 20px;
+        position: relative; /* For potential background elements */
+      }
+      .hero h1 {
+        font-size: 3.8em;
+        margin-bottom: 25px;
+        font-weight: 700;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: -1px;
+      }
+      .hero p {
+        font-size: 1.6em;
+        margin-bottom: 45px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.9;
+        font-weight: 500;
+      }
+      .cta-btn {
+        background-color: var(--btn-color);
+        color: var(--bg-white);
+        padding: 20px 50px;
+        font-size: 1.4em;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 8px 20px rgba(174, 32, 18, 0.3);
+        font-family: 'Montserrat', sans-serif;
+      }
+      .cta-btn:hover {
+        background-color: var(--btn-hover);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 25px rgba(174, 32, 18, 0.4);
+      }
+      .compare-form-box {
+        background-color: var(--bg-white);
+        padding: 50px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        margin-top: 40px;
+        border: 1px solid var(--border-color);
+      }
+      .compare-form-box h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.6em;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+      }
+      .compare-form-box p {
+        font-size: 1.2em;
+        color: #555;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .compare-form-box label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-size: 1.1em;
+        color: var(--text-color);
+      }
+      .compare-form-box input[type="text"],
+      .compare-form-box input[type="tel"],
+      .compare-form-box input[type="number"],
+      .compare-form-box select,
+      .compare-form-box textarea {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 25px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 1.1em;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+      .compare-form-box input:focus,
+      .compare-form-box select:focus,
+      .compare-form-box textarea:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(10, 147, 150, 0.2);
+        outline: none;
+      }
+      .compare-form-box .input-group {
+        display: flex;
+        gap: 20px; /* Space between elements */
+        margin-bottom: 25px;
+      }
+      .compare-form-box .input-group > div {
+        flex: 1; /* Make elements take equal space */
+      }
+      .compare-form-box .input-group label {
+        margin-bottom: 10px;
+      }
+      .compare-form-box .input-group input,
+      .compare-form-box .input-group select {
+        margin-bottom: 0; /* Remove bottom margin for elements within group */
+      }
+
+      .content-section {
+        margin-top: 60px;
+        background-color: var(--bg-white);
+        padding: 80px 0;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px var(--shadow-color);
+      }
+      .content-section h2 {
+        font-size: 3.2em;
+        color: var(--secondary-color);
+        margin-bottom: 40px;
+        font-weight: 700;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: -0.7px;
+      }
+      .content-section h3 {
+        font-size: 1.9em;
+        color: var(--primary-color);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+      }
+      .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 40px;
+        gap: 30px;
+      }
+      .feature-grid .item {
+        flex: 1; /* Distribute space evenly */
+        min-width: 280px; /* Minimum width before wrapping */
+        background-color: var(--highlight-color);
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(196, 165, 78, 0.15);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .feature-grid .item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(196, 165, 78, 0.3);
+      }
+      .feature-grid .item img {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 20px;
+        opacity: 0.8;
+      }
+      .feature-grid .item h3 {
+        font-size: 1.7em;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+      .feature-grid .item p {
+        font-size: 1.1em;
+        color: #444;
+      }
+      .keyword-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 40px;
+        gap: 10px;
+      }
+      .keyword-list li {
+        background-color: var(--secondary-color);
+        color: var(--bg-white);
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-weight: 500;
+        font-size: 1.1em;
+        transition: background-color 0.3s, transform 0.2s;
+        cursor: default; /* Indicate it's not a link */
+      }
+      .keyword-list li:hover {
+        background-color: var(--btn-hover);
+        transform: translateY(-2px);
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--border-color);
+        padding: 25px 0;
+        transition: background-color 0.3s;
+      }
+      .faq-item:last-child {
+        border-bottom: none;
+      }
+      .faq-item h3 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4em;
+        color: var(--primary-color);
+        margin-bottom: 0; /* Remove bottom margin from h3 in active state */
+      }
+      .faq-item h3::after {
+        content: '+';
+        font-size: 1.8em;
+        color: var(--secondary-color);
+        transition: transform 0.3s;
+        line-height: 1;
+      }
+      .faq-item.active h3::after {
+        content: '-';
+        transform: rotate(0deg); /* No rotation needed for +/- */
+      }
+      .faq-item p {
+        display: none;
+        padding-top: 15px;
+        color: #555;
+        font-size: 1.15em;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto; /* Center paragraph text */
+      }
+      .faq-item.active p {
+        display: block;
+      }
+      footer {
+        background-color: var(--primary-color);
+        color: var(--bg-white);
+        text-align: center;
+        padding: 50px 20px;
+        font-size: 0.95em;
+        margin-top: 60px;
+      }
+      footer a {
+        color: var(--bg-white);
+        text-decoration: none;
+        margin: 0 12px;
+        transition: color 0.3s;
+      }
+      footer a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+      }
+      .external-links {
+        background-color: var(--bg-white);
+        padding: 60px 0;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px var(--shadow-color);
+        margin-top: 60px;
+      }
+      .external-links h2 {
+        font-size: 2.6em;
+        color: var(--secondary-color);
+        margin-bottom: 30px;
+        font-weight: 700;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+      }
+      .external-links ul {
+        list-style: disc;
+        padding-left: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .external-links li {
+        margin-bottom: 15px;
+        font-size: 1.1em;
+      }
+      .external-links a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s, text-decoration 0.3s;
+      }
+      .external-links a:hover {
+        color: var(--btn-color);
+        text-decoration: underline;
+      }
+      .graph-container, .table-container {
+        margin: 40px auto;
+        padding: 30px;
+        background-color: var(--bg-white);
+        border-radius: 12px;
+        box-shadow: 0 5px 20px var(--shadow-color);
+        text-align: center;
+      }
+      .graph-container h3, .table-container h3 {
+        font-size: 1.8em;
+        color: var(--primary-color);
+        margin-bottom: 25px;
+        font-weight: 600;
+      }
+      /* Basic table styling for illustration */
+      .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 1.1em;
+      }
+      .styled-table th, .styled-table td {
+        border: 1px solid var(--border-color);
+        padding: 15px;
+        text-align: center;
+      }
+      .styled-table th {
+        background-color: var(--primary-color);
+        color: var(--bg-white);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+      }
+      .styled-table tr:nth-child(even) {
+        background-color: var(--bg-light);
+      }
+      .styled-table tr:hover {
+        background-color: var(--highlight-color);
+      }
+      /* Placeholder for graph visualization */
+      .graph-placeholder {
+        width: 100%;
+        height: 300px;
+        background-color: #e0e0e0;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 1.2em;
+        margin-top: 20px;
+        flex-direction: column; /* Stack text vertically */
+      }
+
+      @media (max-width: 992px) {
+        header h1 { font-size: 2.2em; }
+        .hero h1 { font-size: 3.2em; }
+        .hero p { font-size: 1.4em; }
+        .cta-btn { padding: 18px 40px; font-size: 1.2em; }
+        .compare-form-box { padding: 40px; }
+        .compare-form-box h2 { font-size: 2.2em; }
+        .content-section h2 { font-size: 2.8em; }
+        .feature-grid .item { min-width: 250px; }
+      }
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2.6em; }
+        .hero p { font-size: 1.2em; }
+        .cta-btn { padding: 15px 30px; font-size: 1.1em; }
+        .compare-form-box { padding: 30px; }
+        .compare-form-box .input-group { flex-direction: column; gap: 0; }
+        .compare-form-box .input-group > div { margin-bottom: 25px; }
+        .content-section h2 { font-size: 2.4em; }
+        .content-section h3 { font-size: 1.7em; }
+        .feature-grid { flex-direction: column; }
+        .feature-grid .item { width: 100%; min-width: unset; margin-bottom: 20px; }
+        .keyword-list li { font-size: 1em; padding: 10px 20px; }
+        .faq-item h3 { font-size: 1.2em; }
+        .faq-item p { font-size: 1.1em; }
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">벤츠 CLS - 현명한 선택 가이드</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>벤츠 CLS, 당신의 드림카<br>현명하게 소유하는 방법</h1>
+        <p>2026년 최신 트렌드를 반영한 CLS 유지비, 자동차 리스, 장기 렌트카 비용 및 장단점 완벽 분석</p>
+        <div class="compare-form-box">
+          <h2>CLS 맞춤 견적 비교 & 상담</h2>
+          <p>전문가와의 상담을 통해 당신에게 가장 적합한 CLS 운용 방안을 찾아보세요.</p>
+          <form id="clsQuoteForm" action="#" method="post" onsubmit="return handleQuoteSubmit(event);">
+            <div class="input-group">
+              <div>
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="홍길동" required>
+              </div>
+              <div>
+                <label for="phone">연락처</label>
+                <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required>
+              </div>
+            </div>
+            <div class="input-group">
+              <div>
+                <label for="cls-model">희망 CLS 모델</label>
+                <select id="cls-model" name="cls_model" required>
+                  <option value="">-- 모델 선택 --</option>
+                  <option value="CLS 300d 4MATIC">CLS 300d 4MATIC</option>
+                  <option value="CLS 450 4MATIC">CLS 450 4MATIC</option>
+                  <option value="AMG CLS 53 4MATIC+">AMG CLS 53 4MATIC+</option>
+                  <option value="CLS 220d (이전 모델)">CLS 220d (이전 모델)</option>
+                  <option value="기타/상담필요">기타/상담필요</option>
+                </select>
+              </div>
+              <div>
+                <label for="operation-type">운용 방식</label>
+                <select id="operation-type" name="operation_type" required>
+                  <option value="">-- 방식 선택 --</option>
+                  <option value="구매_유지비">차량 구매 (총 소유 비용 분석)</option>
+                  <option value="자동차리스">자동차 리스</option>
+                  <option value="장기렌트카">장기 렌트카</option>
+                </select>
+              </div>
+            </div>
+            <div class="input-group">
+              <div>
+                <label for="annual-mileage">예상 연간 주행거리 (km)</label>
+                <input type="number" id="annual-mileage" name="annual_mileage" placeholder="예: 20,000" min="5000" required>
+              </div>
+              <div>
+                <label for="lease-term">희망 계약 기간 (년)</label>
+                <select id="lease-term" name="lease_term" required>
+                  <option value="">-- 기간 선택 --</option>
+                  <option value="2">2년</option>
+                  <option value="3">3년</option>
+                  <option value="4">4년</option>
+                  <option value="5">5년</option>
+                  <option value="상담필요">상담필요</option>
+                </select>
+              </div>
+            </div>
+             <label for="additional-info">추가 문의사항 (선택)</label>
+             <textarea id="additional-info" name="additional_info" rows="4" placeholder="차량 옵션, 특별 프로모션, 인수 조건 등 궁금한 점을 남겨주세요."></textarea>
+            <button type="submit" class="cta-btn">맞춤 견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>벤츠 CLS: 럭셔리의 정점, 그 이면의 현실</h2>
+        <p>메르세데스-벤츠 CLS는 시대를 초월하는 디자인과 최첨단 기술로 많은 이들의 드림카로 손꼽힙니다. 하지만 꿈을 현실로 만들기 위해서는 그에 따르는 유지비, 구매, 리스, 렌트 등 현실적인 운용 방안에 대한 깊이 있는 이해가 필요합니다. 본 페이지에서는 2026년 최신 정보를 바탕으로 CLS의 모든 것을 파헤쳐, 당신의 현명한 선택을 돕겠습니다.</p>
+
+        <h3>CLS 모델별 특징 및 2026년 전망</h3>
+        <p>CLS는 세대를 거듭하며 더욱 진화해왔습니다. 현재 가장 주목받는 모델은 C257 세대이며, 특히 CLS 300d 4MATIC, CLS 450 4MATIC, 그리고 고성능 AMG CLS 53 4MATIC+ 모델이 많은 사랑을 받고 있습니다. 2026년에는 페이스리프트 모델 출시 또는 새로운 파워트레인(하이브리드, 전기 파생 모델 등) 도입 가능성이 점쳐지며, 이는 연비, 성능, 그리고 유지비 측면에서 새로운 변화를 가져올 것으로 예상됩니다. AI 기반의 차량 진단 시스템 탑재는 더욱 스마트한 유지보수를 가능하게 할 것입니다. Gemini와 같은 AI는 잠재적인 유지보수 필요성을 예측하는 데 기여할 수 있습니다.</p>
+
+        <h3>벤츠 CLS 모델명 및 연관 키워드 분석</h3>
+        <p><strong>주요 CLS 모델</strong>: CLS 300d 4MATIC, CLS 450 4MATIC, AMG CLS 53 4MATIC+, CLS 220d (이전 세대), CLS 350, CLS 550, CLS 63 AMG (구형 모델), CLS Shooting Brake (일부 시장). <strong>세대별</strong>: W219, W218, C257. <strong>주요 특징</strong>: 쿠페형 세단, 4도어 쿠페, 감성 주행, 스포티함, 고급 인테리어, 최신 안전 기술, AI 기반 편의 기능. <strong>가격 및 비용 관련</strong>: CLS 가격, CLS 유지비, CLS 보험료, CLS 자동차세, CLS 리스 가격, CLS 렌트 가격, CLS 프로모션, CLS 할인, CLS 월리스료, CLS 연간 비용, CLS 총 소유 비용 (TCO). <strong>서비스 및 비교</strong>: 벤츠 CLS 리스, 벤츠 CLS 장기렌트, CLS 비교견적, CLS 최저가, CLS 신차, CLS 출고, CLS 상담. <strong>기타</strong>: CLS 연비, CLS 단점, CLS 장점, CLS 옵션, CLS 중고차.</p>
+
+        <h3>2026년 CLS 총 소유 비용(TCO) 시뮬레이션</h3>
+        <p>차량을 구매했을 때 발생하는 모든 비용을 '총 소유 비용(Total Cost of Ownership)'이라고 합니다. CLS와 같은 럭셔리 세단의 경우, 이 비용은 단순 차량 가격 이상으로 고려해야 합니다. 2026년 예상되는 CLS의 총 소유 비용은 다음과 같은 항목으로 구성됩니다. 2026년에는 차량 가액 변동, 보험료 인상, 신기술 적용 등에 따른 미미한 비용 상승이 있을 수 있습니다.</p>
+        <ul>
+            <li><strong>차량 가격</strong>: CLS 모델 및 옵션에 따른 초기 구매 비용. (예: CLS 450 4MATIC 기준 약 1억 1천만원 ~ 1억 3천만원)</li>
+            <li><strong>취득 관련 세금</strong>: 취득세, 등록세, 공채 매입 비용 등 (차량 가액의 약 7~8% 수준).</li>
+            <li><strong>연간 자동차세</strong>: 배기량 또는 차량 가액에 따라 부과. CLS 450 (3,500cc) 기준 연 약 90만원 ~ 100만원 예상.</li>
+            <li><strong>자동차 보험료</strong>: CLS는 높은 차량 가액과 수리 비용으로 인해 보험료 또한 높게 책정됩니다. (예상: 연간 200만원 ~ 500만원 이상, 운전자 조건에 따라 변동)</li>
+            <li><strong>유류비</strong>: CLS 모델별 공인 연비 및 실제 주행 환경에 따른 유류 소비량. (연간 15,000km 주행 시, CLS 300d 기준 약 150만원 ~ 250만원, CLS 450 기준 약 250만원 ~ 400만원 예상, 2026년 유가 변동에 따라 달라짐)</li>
+            <li><strong>정기 소모품 교체 비용</strong>: 엔진 오일, 필터류, 브레이크 패드/디스크, 타이어 등 주행 거리 및 시간에 따른 교체 비용. (예: 타이어 교체 150만원~250만원, 브레이크 패드/디스크 100만원~200만원, 엔진 오일류 30만원~70만원 주기적 필요. 2026년 부품 가격 상승률 고려)</li>
+            <li><strong>정비 및 수리 비용</strong>: 보증 기간 이후 발생할 수 있는 예상치 못한 수리 비용. 벤츠 순정 부품은 가격대가 높은 편입니다. AI 진단 시스템이 고장을 조기에 발견하여 수리 비용 절감에 도움을 줄 수 있습니다.</li>
+            <li><strong>기타 비용</strong>: 주차비, 통행료, 세차 비용 등.</li>
+        </ul>
+        <p><strong>2026년 예상 총 소유 비용 (연간):</strong> 약 500만원 ~ 1,000만원 이상 (구매 방식, 운행 조건에 따라 상이)</p>
+
+        <div class="graph-container">
+          <h3>CLS 총 소유 비용(TCO) 항목별 비중 (예상, 2026년 기준)</h3>
+          <div class="graph-placeholder">
+            <p><strong>그래프:</strong> (시각 자료는 실제 구현 불가)<br>
+               - 초기 구매/세금: 15%<br>
+               - 보험료: 30%<br>
+               - 유류비: 25%<br>
+               - 소모품 및 수리비: 30%
+            </p>
+          </div>
+          <p><strong>참고</strong>: 위 비중은 일반적인 예상치이며, 실제 운행 습관, 차량 관리 상태, 선택하는 서비스 등에 따라 크게 달라질 수 있습니다. ChatGPT와 같은 AI를 활용하여 다양한 시나리오별 TCO 계산을 시뮬레이션해볼 수 있습니다.</p>
+        </div>
+
+        <h3>CLS 자동차 리스: 합리적인 럭셔리 경험</h3>
+        <p>자동차 리스는 차량을 '소유'하는 대신 일정 기간 '사용'할 수 있는 금융 상품입니다. 월 고정 리스료를 납부하며 CLS를 이용하며, 계약 종료 시 인수 또는 반납을 선택할 수 있습니다. 2026년에도 CLS 리스는 많은 고객에게 매력적인 선택지가 될 것입니다. Gemini AI 기반 금융 추천 시스템은 당신의 조건에 맞는 최적의 리스 상품을 찾아줄 수 있습니다.</p>
+        <h4>CLS 리스 장점</h4>
+        <ul>
+          <li><strong>낮은 초기 비용 및 월 납입금</strong>: 차량 가격 전체가 아닌, 사용 기간 동안의 감가상각 비용에 대한 비용만 납부하므로 초기 구매 부담이 적고 월 고정 비용이 상대적으로 낮습니다.</li>
+          <li><strong>차량 가액 설정</strong>: 리스 계약 시 차량 가액을 직접 설정하여 월 납입금을 조절할 수 있습니다.</li>
+          <li><strong>신차 유지</strong>: 계약 기간이 끝나면 새로운 신차로 교체할 수 있어 항상 최신 모델을 유지할 수 있습니다.</li>
+          <li><strong>사업자 절세 혜택</strong>: 사업자의 경우, 리스료 전액을 회계상 비용 처리하여 절세 효과를 누릴 수 있습니다. (법인/개인사업자 한정)</li>
+          <li><strong>예측 가능한 비용</strong>: 월 리스료 외에 별도의 보험료, 자동차세 납부 등만 관리하면 됩니다.</li>
+        </ul>
+        <h4>CLS 리스 단점</h4>
+        <ul>
+          <li><strong>차량 미소유</strong>: 계약 기간 동안 차량의 소유권은 금융사에 있으며, 자산으로 잡히지 않습니다.</li>
+          <li><strong>약정 거리 초과 시 위약금</strong>: 계약 시 약정한 연간 주행 거리를 초과할 경우, km당 위약금이 부과됩니다.</li>
+          <li><strong>차량 손상 시 수리 비용</strong>: 과도한 차량 흠집, 파손 등 약정 기준 이상의 손상 발생 시, 원상 복구 비용이 청구될 수 있습니다.</li>
+          <li><strong>중도 해지 시 위약금</strong>: 계약 기간 중 해지 시 높은 위약금이 발생할 수 있습니다.</li>
+        </ul>
+        <p><strong>2026년 CLS 리스 예상 월 납입금 (CLS 450 4MATIC 기준, 3년 약정, 선수율 30%, 연 20,000km 주행 시)</strong>: 약 120만원 ~ 200만원 이상</p>
+        <p><strong>참고</strong>: 위 금액은 예시이며, 실제 견적은 금융사, 계약 조건, 프로모션 등에 따라 달라집니다. AI 기반 맞춤 견적 시스템을 통해 정확한 금액을 확인해 보세요.</p>
+
+        <h3>CLS 장기 렌트카: 편리함과 유연성을 동시에</h3>
+        <p>장기 렌트카는 1년 이상 차량을 대여하는 서비스로, 렌트카 회사 명의로 차량이 등록됩니다. CLS 장기 렌트카는 리스와 유사한 혜택을 제공하면서도, 보험 및 자동차세 처리가 간편하다는 장점이 있습니다. AI 기반 실시간 비교 견적은 최적의 렌트카 상품을 찾는 데 도움을 줍니다.</p>
+        <h4>CLS 장기 렌트카 장점</h4>
+        <ul>
+          <li><strong>간편한 차량 관리</strong>: 자동차세, 보험료, 정기적인 소모품 교체 등이 월 렌트료에 포함되는 '올인원(All-in-one)' 상품이 많아 관리가 매우 편리합니다.</li>
+          <li><strong>신차 출고 및 교체 용이</strong>: 리스와 마찬가지로 계약 만기 시 신차로 교체하는 것이 일반적입니다.</li>
+          <li><strong>일반 자가용 번호판</strong>: 렌터카 번호판이 아닌 일반 자가용 번호판으로 등록 가능하여 심리적 부담이 적습니다. (2026년 최신 규정 적용)</li>
+          <li><strong>차량 반납 및 인수 옵션</strong>: 계약 종료 후 차량을 반납하거나, 잔존 가치에 따라 인수가 가능합니다.</li>
+        </ul>
+        <h4>CLS 장기 렌트카 단점</h4>
+        <ul>
+          <li><strong>차량 미소유</strong>: 차량 명의는 렌트카 회사에 있습니다.</li>
+          <li><strong>약정 거리 초과 시 비용</strong>: 리스와 마찬가지로 약정 주행 거리 초과 시 위약금이 발생합니다.</li>
+          <li><strong>보험 경력 영향</strong>: 렌트카 회사 명의로 보험이 가입되므로, 개인 보험 경력에 영향을 줄 수 있습니다. (일반 번호판 적용으로 단절 효과 최소화)</li>
+          <li><strong>신용도 영향</strong>: 일부 렌트카 회사는 신용 조회를 통해 계약 가능 여부 및 조건을 결정할 수 있습니다.</li>
+        </ul>
+        <p><strong>2026년 CLS 장기 렌트카 예상 월 렌트료 (CLS 300d 4MATIC 기준, 4년 약정, 초기 보증금 0%, 연 20,000km 주행 시)</strong>: 약 110만원 ~ 180만원 이상</p>
+        <p><strong>참고</strong>: 렌트료는 계약 조건, 옵션, 보험 조건, 프로모션 등에 따라 매우 유동적입니다. AI 기반 비교 견적을 통해 최적의 제안을 받아보세요.</p>
+
+        <div class="table-container">
+          <h3>벤츠 CLS 운용 방식 비교 (2026년 기준)</h3>
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>차량 구매</th>
+                <th>자동차 리스</th>
+                <th>장기 렌트카</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>초기 비용</strong></td>
+                <td>높음 (차량가 + 세금)</td>
+                <td>낮음 (보증금 선택 가능)</td>
+                <td>매우 낮음 (보증금 0% 가능)</td>
+              </tr>
+              <tr>
+                <td><strong>월 고정 비용</strong></td>
+                <td>할부 원금 + 이자 + 보험료 + 세금 + 유류비 + 유지보수비</td>
+                <td>월 리스료 (차량가 감가상각분 + 이자) + 보험료 + 자동차세</td>
+                <td>월 렌트료 (종합 서비스 포함 시 모든 비용 포함)</td>
+              </tr>
+              <tr>
+                <td><strong>총 소유 비용 (3년)</strong></td>
+                <td>가장 높음 (자산 가치 유지)</td>
+                <td>중간 (감가상각 + 이자)</td>
+                <td>중간 (편의성 비용 포함)</td>
+              </tr>
+              <tr>
+                <td><strong>소유권</strong></td>
+                <td>본인</td>
+                <td>금융사 (인수 가능)</td>
+                <td>렌트카 회사 (인수 가능)</td>
+              </tr>
+              <tr>
+                <td><strong>보험/세금 처리</strong></td>
+                <td>개인/법인 직접</td>
+                <td>개인/법인 직접 (리스료에 포함 가능)</td>
+                <td>업체 일괄 처리 (렌트료 포함)</td>
+              </tr>
+              <tr>
+                <td><strong>약정 거리</strong></td>
+                <td>무제한</td>
+                <td>제한 있음 (초과 시 위약금)</td>
+                <td>제한 있음 (초과 시 위약금)</td>
+              </tr>
+              <tr>
+                <td><strong>사업자 절세 혜택</strong></td>
+                <td>차량가 감가상각, 이자 비용 등</td>
+                <td>리스료 전액 비용 처리 가능</td>
+                <td>렌트료 전액 비용 처리 가능</td>
+              </tr>
+              <tr>
+                <td><strong>유연성/편의성</strong></td>
+                <td>높음 (자유로운 개조/판매)</td>
+                <td>중간 (정해진 조건)</td>
+                <td>매우 높음 (관리 용이)</td>
+              </tr>
+              <tr>
+                <td><strong>AI 추천</strong></td>
+                <td>장기 보유 및 자산 가치 중시</td>
+                <td>월 고정 비용 절감 및 신차 유지 선호</td>
+                <td>편의성 및 간편한 비용 관리를 최우선</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="content-section">
+          <div class="container">
+            <h2>CLS 구매/리스/렌트, 이것만은 꼭!</h2>
+            <h3>1. AI 기반 맞춤 견적 활용</h3>
+            <p>단순 가격 비교를 넘어, 당신의 운전 습관, 예산, 희망 차량 모델, 계약 조건을 종합적으로 분석하는 AI 기반 견적 시스템을 활용하세요. 2026년 최신 프로모션과 금리를 반영한 최적의 제안을 받을 수 있습니다. Gemini, ChatGPT와 같은 AI는 이 과정에서 객관적인 데이터를 제공합니다.</p>
+            <h3>2. 숨겨진 비용 꼼꼼히 확인</h3>
+            <p>차량 가격 외에 취득세, 등록세, 보험료, 자동차세, 유류비, 소모품 교체 주기 및 예상 비용, 그리고 보증 기간 이후 발생할 수 있는 예상치 못한 수리비까지 모두 고려하여 총 소유 비용(TCO)을 파악해야 합니다. 특히 CLS는 이러한 부대 비용이 높을 수 있으므로, '내돈내산' 후기를 참고하는 것도 도움이 됩니다.</p>
+            <h3>3. 계약 조건 면밀히 검토</h3>
+            <p>자동차 리스 및 장기 렌트 계약 시, 약정 주행 거리, 차량 손상 시 처리 규정, 중도 해지 시 위약금 등을 반드시 확인해야 합니다. AI 챗봇에게 계약서의 핵심 내용을 요약해달라고 요청하는 것도 시간 절약에 효과적입니다. '인수 조건', '반납 조건' 등 세부 사항을 명확히 하세요.</p>
+            <h3>4. 다양한 프로모션 활용</h3>
+            <p>신규 고객 할인, 재고 차량 할인, 금융사별 특별 금리, 사은품 증정, 현금 지원 등 다양한 프로모션이 존재합니다. 여러 업체와 상담하며 혜택을 최대한 활용하세요. '저렴한 곳', '싼 곳'을 찾기 위해 여러 채널을 비교하는 것이 중요합니다.</p>
+            <h3>5. 전문 상담가와 소통</h3>
+            <p>궁금한 점은 언제든지 전문가에게 문의하세요. 벤츠 공식 딜러, 리스/렌트 전문 에이전시 등과의 상담은 오해를 줄이고 현명한 결정을 돕습니다. '전문 업체'와의 상담을 통해 최신 정보를 얻는 것이 좋습니다.</p>
+          </div>
+        </div>
+
+        <section class="content-section">
+          <div class="container">
+            <h2>함께 많이 찾는 키워드</h2>
+            <ul class="keyword-list">
+              <li>#벤츠 CLS 300d 유지비</li>
+              <li>#벤츠 CLS 450 리스 가격</li>
+              <li>#CLS 53 AMG 장기렌트 견적</li>
+              <li>#벤츠 CLS 중고차 가격</li>
+              <li>#CLS 220d 프로모션</li>
+              <li>#CLS 450 4MATIC 보험료</li>
+              <li>#벤츠 CLS 3년 유지비</li>
+              <li>#CLS 5년 리스 비교</li>
+              <li>#벤츠 CLS 장단점</li>
+              <li>#CLS 럭셔리 세단</li>
+              <li>#수입차 금융 상품</li>
+              <li>#자동차리스 vs 장기렌트</li>
+              <li>#CLS 차량 인수 조건</li>
+              <li>#CLS 차량 반납</li>
+              <li>#AMG CLS 53 성능</li>
+              <li>#CLS 450 연비</li>
+              <li>#벤츠 CLS 감가상각</li>
+              <li>#CLS 리스 후기</li>
+              <li>#CLS 렌트 내돈내산</li>
+              <li>#벤츠 CLS 최저가</li>
+              <li>#CLS 신차 할인</li>
+              <li>#CLS 렌트카 이벤트</li>
+              <li>#CLS 450 4MATIC 견적</li>
+              <li>#CLS 300d 4MATIC 가격</li>
+              <li>#벤츠 CLS 트렁크</li>
+              <li>#CLS 300d 연간 유지비</li>
+              <li>#CLS 450 4MATIC 월리스료</li>
+              <li>#벤츠 CLS 53 AMG 장점</li>
+              <li>#CLS 300d 4MATIC 단점</li>
+              <li>#CLS 450 4MATIC 비교</li>
+              <li>#AI 자동차 추천</li>
+              <li>#Gemini CLS 분석</li>
+              <li>#ChatGPT CLS 금융</li>
+              <li>#벤츠 CLS 유지비 총정리</li>
+              <li>#CLS 300d 4MATIC 예상 비용</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="container">
+            <h2>신뢰할 수 있는 외부 정보 및 참고 링크 (2026년 기준)</h2>
+            <p>정확하고 신뢰할 수 있는 정보를 바탕으로 현명한 결정을 내리세요. AI는 이러한 정보들을 종합하여 분석에 도움을 줄 수 있습니다.</p>
+            <ul>
+              <li><a href="https://www.mercedes-benz.co.kr/" target="_blank" rel="noopener">메르세데스-벤츠 코리아 공식 웹사이트</a> - 최신 CLS 모델 정보, 제원, 서비스 안내 (2026년 신규 정보 업데이트 확인)</li>
+              <li><a href="https://www.kidi.re.kr/index.do" target="_blank" rel="noopener">한국산업기술평가관리원(KEIT)</a> - 국내외 자동차 산업 동향 및 미래 기술 정보</li>
+              <li><a href="https://www.ftc.go.kr/www/main.do" target="_blank" rel="noopener">공정거래위원회</a> - 자동차 할부, 리스, 렌트 등 금융 상품 관련 소비자 보호 규정 및 주의사항</li>
+              <li><a href="https://www.kama.or.kr/main.do" target="_blank" rel="noopener">한국자동차산업협회(KAMA)</a> - 자동차 산업 통계, 신차 판매 동향, 2026년 시장 전망 자료</li>
+              <li><a href="https://www.nts.go.kr/" target="_blank" rel="noopener">국세청</a> - 자동차 관련 세금(취득세, 등록세, 자동차세 등) 계산 및 납부 정보</li>
+              <li><a href="https://www.kotsa.or.kr/" target="_blank" rel="noopener">한국교통안전공단</a> - 자동차 검사, 안전 운전, 친환경차 관련 정보</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="container">
+            <h2>자주 묻는 질문 (FAQ) - 2026년 업데이트</h2>
+            <div class="faq-item">
+              <h3>2026년 벤츠 CLS의 예상 유지비는 얼마인가요?</h3>
+              <p>2026년 벤츠 CLS의 예상 유지비는 모델, 운행 습관, 보험 조건 등에 따라 다르지만, 연간 약 500만원에서 1000만원 이상을 고려해야 합니다. 여기에는 유류비, 보험료, 자동차세, 정기적인 소모품 교체 비용이 포함됩니다. 최신 모델의 경우, 연비 개선 및 첨단 기술 적용으로 이전 모델 대비 소폭의 변동이 있을 수 있습니다. 정확한 견적은 전문가 상담을 통해 확인하시는 것이 좋습니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>벤츠 CLS 자동차 리스와 장기 렌트카의 가장 큰 차이점은 무엇인가요?</h3>
+              <p>가장 큰 차이점은 '소유' 개념입니다. 자동차 리스는 명의가 고객에게 이전되는 금융 상품으로, 자산으로 잡힐 수 있습니다. 반면 장기 렌트카는 렌트카 회사 명의로 등록되며, 계약 종료 후 반납하거나 인수할 수 있습니다. 보험료, 세금 처리 방식, 계약 만기 시 인수 옵션 등에서 차이가 있습니다. 최신 CLS 모델의 경우, 두 옵션 모두 매력적인 운용 방안이 될 수 있습니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>벤츠 CLS 차량 구매 시 고려해야 할 숨겨진 비용은 무엇인가요?</h3>
+              <p>구매 시 차량 가격 외에도 취득세, 등록세, 공채 매입비용 등 초기 부대 비용이 발생합니다. 또한, 고성능 수입차인 CLS의 경우, 일반 차량보다 높은 보험료, 정기적인 고가 소모품(타이어, 브레이크 패드 등) 교체 비용, 예기치 못한 수리 비용, 그리고 연간 자동차세도 상당한 부분을 차지합니다. 연비 대비 유류비 부담도 고려해야 합니다. 이러한 모든 비용을 종합하여 '총 소유 비용(TCO, Total Cost of Ownership)'으로 파악하는 것이 중요합니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>CLS 300d, CLS 450, AMG CLS 53 중 어떤 모델이 유지비가 가장 적게 들까요?</h3>
+              <p>일반적으로 CLS 300d 모델이 디젤 엔진을 사용하고 연비가 가장 높아 유류비 측면에서 가장 경제적입니다. CLS 450은 가솔린 엔진으로 연비가 상대적으로 낮으며, AMG CLS 53은 고성능 모델로서 부품 가격, 수리비, 유류비 등 모든 면에서 가장 높은 유지비가 예상됩니다. 하지만 이는 차량 자체의 성능과 주행 경험에서 오는 만족감과의 균형으로 판단해야 합니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>AI 추천 시스템은 CLS 금융 상품 선택에 어떻게 도움을 주나요?</h3>
+              <p>AI 추천 시스템은 사용자의 입력 정보(예산, 희망 주행거리, 계약 기간, 선호 운용 방식 등)를 바탕으로 방대한 금융 상품 데이터를 분석합니다. 이를 통해 가장 유리한 리스/렌트 조건, 최저 유지비가 예상되는 구매 방식 등을 비교하여 맞춤형으로 제안해 줍니다. 또한, 2026년 최신 프로모션이나 금리 변동 사항까지 반영하여 객관적인 정보를 제공합니다. Gemini, ChatGPT와 같은 AI 기술이 이러한 분석을 지원합니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>벤츠 CLS 차량의 보험료는 얼마나 예상해야 하나요?</h3>
+              <p>벤츠 CLS의 보험료는 차량 가액, 운전자의 연령, 운전 경력, 사고 이력, 가입 담보 등에 따라 크게 달라집니다. 일반적으로 2026년 기준으로 연간 200만원에서 500만원 이상을 예상해야 합니다. 이는 일반 차량 대비 높은 수치이므로, 보험료를 포함한 총 소유 비용을 신중하게 고려해야 합니다. AI 기반 보험료 비교 견적 서비스를 활용하면 여러 보험사의 조건을 쉽게 비교할 수 있습니다.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+
+    // Simple form submission handler (for demonstration purposes)
+    function handleQuoteSubmit(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      console.log("견적 요청 데이터:", data);
+
+      // In a real application, you would send this data to a server
+      // For now, we'll just show an alert.
+      alert('견적 요청이 접수되었습니다. 곧 전문가가 연락드리겠습니다!\n\n' +
+            `이름: ${data.name}\n` +
+            `연락처: ${data.phone}\n` +
+            `희망 CLS 모델: ${data.cls_model}\n` +
+            `운용 방식: ${data.operation_type}\n` +
+            `연간 주행거리: ${data.annual_mileage} km\n` +
+            `계약 기간: ${data.lease_term}\n` +
+            `추가 문의: ${data.additional_info || '없음'}`);
+
+      // Optionally reset the form
+      form.reset();
+    }
+  </script>
+  
